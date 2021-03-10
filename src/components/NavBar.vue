@@ -1,4 +1,5 @@
 <template>
+  <Alert v-if="isError" />
     <div class="navbar mb-2 shadow-lg bg-content-800 text-content-100 rounded-box">
         <div class="flex-1 px-2 mx-2">
             <span class="text-lg font-bold">
@@ -47,7 +48,9 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
-import { isAuthenticated, signOut } from '../helpers/useAuth'
+import { isAuthenticated, signOut } from '../helpers/useAuth.js'
+import { isError } from '../helpers/useError'
+
 const router = useRouter()
 const logout = async () => {
     await signOut()

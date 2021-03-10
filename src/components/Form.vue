@@ -55,30 +55,46 @@
 import { ref, defineProps } from 'vue'
 import { useRouter } from 'vue-router'
 import { signIn, signUp, googlePopup, auth } from '../helpers/useAuth'
+import { isError, msg } from '../helpers/useError'
+
 const router = useRouter()
 const login = async () => {
   try {
     await signIn(email.value, password.value)
     router.push('/')
+    isError.value = false
   } catch (error) {
+    isError.value = true
+    msg.value = 'There was an Authentication Error'
     console.log(error)
   }
 }
 const register = async () => {
   try {
     await signUp(email.value, password.value)
+    isError.value = false
     const user = auth().currentUser
+
+    isError.value = false
     await user.updateProfile({ displayName: name.value })
     router.push('/')
+    isError.value = true
+    msg.value = 'There was an Authentication Error'
   } catch (error) {
+    isError.value = true
+    msg.value = 'There was an Authentication Error'
     console.log(error)
   }
 }
 const google = async () => {
   try {
     await googlePopup()
+        isError.value = false
+
     router.push('/')
   } catch (error) {
+    isError.value = true
+    msg.value = 'There was an Authentication Error'
     console.log(error)
   }
 }
