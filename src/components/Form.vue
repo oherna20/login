@@ -69,6 +69,9 @@
       <button @click="google" class="btn btn-primary-content mt-8">
         <img class="w-8" src="../assets/google.svg" alt="Google Logo" />
       </button>
+      <button @click="login" class="btn btn-accent mt-8">
+        <img class="w-8" src="../assets/homeLogo.svg" alt="Home Logo" />
+      </button>
     </form>
   </section>
 </template>

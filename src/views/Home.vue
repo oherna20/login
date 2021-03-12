@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-80">
+  <div class="mt-8">
     <p class="text-3xl mx-auto text-center m-8 tracking-wider font-thin">
       Welcome {{ user?.displayName || 'New User' }}
         </p>

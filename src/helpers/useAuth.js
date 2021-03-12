@@ -10,6 +10,9 @@ export const { auth } = firebase
 export const { isAuthenticated, user } = useAuth()
 
 const { GoogleAuthProvider } = auth
+firebase.auth().languageCode = 'it';
+// To apply the default browser preference instead of explicitly setting it.
+// firebase.auth().useDeviceLanguage();
 
 export const signIn = (email, password) =>
 auth().signInWithEmailAndPassword (email, password)
